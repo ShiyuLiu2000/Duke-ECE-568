@@ -22,7 +22,9 @@ from django.db.models import Q
 import datetime
 from django.views.decorators.http import require_POST
 from django.utils import timezone
-
+from django.core.mail import send_mail
+from django.conf import settings
+import os
 
 def rider_signup_view(request):
     if request.method == "POST":
@@ -339,15 +341,17 @@ def confirm_order(request, order_id):
         order.confirmed_by = request.user.driver
         order.save()
 
-        # send emails to riders here
-        # send_mail (
-        #     'Your ride has been confirmed',
-        #     'Your ride with order number {} has been confirmed.'.format (order.order_number),
-        #     'from@example.com',
-        #     [order.ride_owner.email] + [rider.email for rider in order.riders.all ()],
-        #     fail_silently=False,
-        # )
+        subject = 'Your ride has been confirmed'
+        message = """Your ride with order number {} has been confirmed.\n\nThank you for using our service.\nBest regards,\nYour Ride Sharing Team""".format(order.order_number)
+        from_email = 'your-email@example.com' 
+        recipient_list = [order.ride_owner.email] + [rider.email for rider in order.riders.all()]  
 
+        print("Sending email...")
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+        print("Email sent!")
+
+        messages.success(request, 'Order confirmed successfully!')
+    
         return redirect("status_driver")
     else:
         messages.error(request, "You do not have permission to confirm this order, please edit your driver status in your profile")

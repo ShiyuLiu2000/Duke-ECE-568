@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import certifi
+import os
 
+os.environ['SSL_CERT_FILE'] = certifi.where()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +28,7 @@ SECRET_KEY = "django-insecure--hf7-q#s_hwpl#)z)rky&77=2)4-m$%-v8wuqudijuy#50g9*r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["vcm-38454.vm.duke.edu", "127.0.0.1"]
+ALLOWED_HOSTS = ["web", "localhost", "127.0.0.1","vcm-38487.vm.duke.edu","vcm-38454.vm.duke.edu"]
 
 
 # Application definition
@@ -127,3 +130,10 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com' 
+EMAIL_PORT = 587 
+EMAIL_HOST_USER = 'ridesharemyuber@gmail.com' 
+EMAIL_HOST_PASSWORD = 'mmycykdmplnsuzim' 
+EMAIL_USE_TLS = True  

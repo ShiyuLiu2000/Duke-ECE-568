@@ -1,5 +1,5 @@
 <!-- status_driver.html -->
-<h2>Order Status</h2>
+<!-- <h2>Order Status</h2>
 <form action="{% url 'logout' %}" method="post">
     {% csrf_token %}
     <button type="submit">Logout</button>
@@ -14,4 +14,50 @@
 </p>
 {% endfor %}
 <a href="{% url 'search_ride_driver' %}">Ride Request Search</a>
-<a href="{% url 'driver_profile' %}">View Profile</a>
+<a href="{% url 'driver_profile' %}">View Profile</a> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Driver Dashboard</title>
+    <!-- 可以添加 CSS 来美化消息显示 -->
+    <style>
+        .messages li {
+            list-style-type: none;
+            margin: 10px 0;
+            padding: 10px;
+        }
+        .success { background-color: #ddffdd; color: green; }
+        .error { background-color: #ffdddd; color: red; }
+        /* 添加更多自定义样式 */
+    </style>
+</head>
+<body>
+    <!-- 消息显示部分 -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <!-- 订单状态显示部分 -->
+    <h2>Order Status</h2>
+    {% for order in orders %}
+    <p>
+        Destination: {{ order.destination_address }},
+        Status: {{ order.get_status_display }},
+        Date: {{ order.required_arrival_date }},
+        Time: {{ order.required_arrival_time }}
+        {% if order.status == 'confirmed' %}<span class="status confirmed">confirmed, in process</span>{% endif %}
+        {% if order.status == 'completed' %}<span class="status completed">completed</span>{% endif %}
+        <a href="{% url 'order_detail' order.id %}">View Details</a>
+    </p>
+    {% endfor %}
+    
+    <a href="{% url 'search_ride_driver' %}">Ride Request Search</a>
+    <a href="{% url 'driver_profile' %}">View Profile</a>
+</body>
+</html>
