@@ -1,0 +1,19 @@
+<!-- driver_profile.html -->
+{% if not is_editing %}
+<a href="?edit=1">Edit</a>
+<p>First name: {{ form.first_name.value }}</p>
+<p>Last name: {{ form.last_name.value }}</p>
+<p>Vehicle type: {{ form.vehicle_type.value }}</p>
+<p>Vehicle license plate number: {{ form.vehicle_license_plate_number.value }}</p>
+<p>Special vehicle info: {{ form.special_vehicle_info.value }}</p>
+<p>Vehicle's maximum number of passengers: {{ form.vehicle_capacity.value }}</p>
+
+{% else %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Finish Edit</button>
+</form>
+{% endif %}
+<a href="{% url 'status_driver' %}"><button type="button">Return</button></a>

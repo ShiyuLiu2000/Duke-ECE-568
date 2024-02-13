@@ -1,0 +1,17 @@
+<!-- status_driver.html -->
+<h2>Order Status</h2>
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+{% for order in orders %}
+<p>
+    Destination: {{ order.destination_address }}, Status: {{ order.get_status_display }},
+    Date: {{ order.required_arrival_date }}, Time: {{ order.required_arrival_time }}
+    {% if order.status == 'confirmed' %}<span>confirmed, in process</span>{% endif %}
+    {% if order.status == 'completed' %}<span>completed</span>{% endif %}
+    <a href="{% url 'order_detail' order.id %}">View Details</a>
+</p>
+{% endfor %}
+<a href="{% url 'search_ride_driver' %}">Ride Request Search</a>
+<a href="{% url 'driver_profile' %}">View Profile</a>

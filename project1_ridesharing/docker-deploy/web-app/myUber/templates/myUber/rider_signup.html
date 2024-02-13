@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rider Sign Up</title>
+</head>
+
+<body>
+    <h2>Rider Sign Up</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign up</button>
+    </form>
+    <a href="{% url 'driver_signup' %}">Register as driver here</a>
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+{% block content %}
+<h2>Ride Details</h2>
+
+<p><strong>Order Number:</strong> {{ order.order_number }}</p>
+<p><strong>Destination:</strong> {{ order.destination_address }}</p>
+<p><strong>Date:</strong> {{ order.required_arrival_date }}</p>
+<p><strong>Time:</strong> {{ order.required_arrival_time }}</p>
+<p><strong>Total Passengers:</strong> {{ order.total_passengers }}</p>
+<p><strong>Vehicle Type (Preferred):</strong> {{ order.vehicle_type }}</p>
+<p><strong>Special Request:</strong> {{ order.special_request }}</p>
+<p><strong>Shareable:</strong> {{ order.shareable }}</p>
+<p><strong>Status:</strong> {{ order.get_status_display }}</p>
+
+<h3>Parties:</h3>
+<ul>
+    {% for party in ride_parties %}
+    <li>{{ party.rider.username }} - {{ party.passengers }} passengers</li>
+    {% endfor %}
+</ul>
+
+{% if driver %}
+<h3>Driver and Vehicle Details:</h3>
+<p><strong>Name:</strong> {{ driver.first_name }} {{ driver.last_name }}</p>
+<p><strong>Vehicle Type:</strong> {{ driver.vehicle_type }}</p>
+<p><strong>License Plate:</strong> {{ driver.vehicle_license_plate_number }}</p>
+<p><strong>Special Vehicle Info:</strong> {{ driver.special_vehicle_info }}</p>
+{% endif %}
+
+<a href="{% url 'status_rider' %}">Return to Ride Status</a>
+
+{% endblock %}
+
+</html>

@@ -1,0 +1,33 @@
+<!-- order_detail.html -->
+<h2>Ride Details</h2>
+<p>Destination Address: {{ order.destination_address }}</p>
+<p>Status: {{ order.get_status_display }}</p>
+<p>Required Arrival Date: {{ order.required_arrival_date|date:"N j, Y" }}</p>
+<p>Required Arrival Time: {{ order.required_arrival_time|date:"P" }}</p>
+
+<!-- ride owner and passengers -->
+<p>Ride Owner: {{ order.ride_owner.username }}</p>
+<p>Total Passengers: {{ order.total_passengers }}</p>
+
+<h2>Passenger parties</h2>
+<!-- traverse all passengers -->
+{% for party in order.parties.all %}
+<p>{{ party.rider.username }} - Passenger Number: {{ party.passengers }}</p>
+{% endfor %}
+
+
+<!-- show "complete" button if order is not completed -->
+{% if order.status != 'completed' %}
+<form method="post" action="{% url 'complete_order' order.id %}">
+    {% csrf_token %}
+    <button type="submit">Complete Order</button>
+</form>
+
+{% endif %}
+{% if messages %}
+{% for message in messages %}
+{% if forloop.last %}
+<div class="{{ message.tags }}">{{ message }}</div>
+{% endif %}
+{% endfor %}
+{% endif %}

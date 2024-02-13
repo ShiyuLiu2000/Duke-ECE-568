@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+{% block content %}
+<h2>Search Sharing Rides</h2>
+
+<form method="get">
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+
+
+{% if results %}
+{% if results|length > 0 %}
+<ul>
+    {% for order in results %}
+    <li>
+        Destination: {{ order.destination_address }},
+        Date: {{ order.required_arrival_date|date:"Y-m-d" }},
+        Time: {{ order.required_arrival_time|time:"H:i" }},
+        Passengers: {{ order.total_passengers }},
+        <form action="{% url 'join_ride' order.id %}" method="post">
+            {% csrf_token %}
+            <label for="passengers">Number of riders in your party:</label>
+            <input type="number" name="passengers" id="passengers" value="1" min="1" required>
+            <button type="submit">Join</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No ride available.</p>
+{% endif %}
+{% else %}
+<p>No ride available.</p>
+{% endif %}
+{% if messages %}
+    {% for message in messages %}
+        {% if forloop.last %}
+            <div class="{{ message.tags }}">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<a href="{% url 'status_rider' %}">View My Rides</a>
+
+{% endblock %}
+
+</html>

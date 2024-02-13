@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+{% block content %}
+<h2>Search for Rides to Drive</h2>
+{% if messages %}
+{% for message in messages %}
+{% if forloop.last %}
+<div class="{{ message.tags }}">{{ message }}</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+<form method="get" action="">
+    <label for="destination_address">Destination Address:</label>
+    <input type="text" id="destination_address" name="destination_address"
+        value="{{ request.GET.destination_address }}">
+
+    <label for="arrival_date">Required Arrival Date:</label>
+    <input type="date" id="arrival_date" name="arrival_date" value="{{ request.GET.arrival_date }}">
+
+    <label for="arrival_time">Required Arrival Time(Select a preferred time. Orders within ±15min of this time will be shown.):</label>
+    <input type="time" id="arrival_time" name="arrival_time" value="{{ request.GET.arrival_time }}">
+
+    <button type="submit" name="filter">Search</button>
+</form>
+
+{% if orders %}
+{% if orders|length > 0 %}
+{% for order in orders %}
+<p>
+    Destination: {{ order.destination_address }}, Date: {{ order.required_arrival_date }},
+    Time: {{ order.required_arrival_time }}, Passengers: {{ order.total_passengers }}
+<form method="post" action="{% url 'confirm_order' order.id %}">
+    {% csrf_token %}
+    <button type="submit">Confirm</button>
+</form>
+</p>
+{% endfor %}
+{% else %}
+<p>No ride available.</p>
+{% endif %}
+{% else %}
+<p>No ride available.</p>
+{% endif %}
+
+
+<a href="{% url 'status_driver' %}"><button type="button">Return</button></a>
+
+{% endblock %}
+
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+{% block content %}
+<h2>Modify Ride</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+
+<a href="{% url 'status_rider' %}">Back to Ride Status</a>
+{% endblock %}
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+{% block content %}
+<h2>Request a Ride</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Request Ride</button>
+</form>
+{% if messages %}
+    {% for message in messages %}
+        {% if forloop.last %}
+            <div class="{{ message.tags }}">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endblock %}
+
+</html>

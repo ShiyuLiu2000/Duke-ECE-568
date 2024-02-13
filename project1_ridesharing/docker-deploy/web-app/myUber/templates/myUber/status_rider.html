@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+{% block content %}
+<h2>Ride Status</h2>
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+<a href="{% url 'request_ride' %}">Request a Ride</a>
+<a href="{% url 'search_rides' %}" class="btn btn-primary">Search Sharing Rides</a>
+<ul>
+    {% for order in orders %}
+    <li>
+        Destination: {{ order.destination_address }}, Status: {{ order.get_status_display }},
+        Date: {{ order.required_arrival_date }}, Time: {{ order.required_arrival_time }}
+        <a href="{% url 'ride_detail' order.id %}">View Detail</a>
+        {% if order.status == "open" %}
+        <form action="{% url 'cancel_ride' order.id %}" method="post" onsubmit="return confirm('Are you sure?');">
+            {% csrf_token %}
+            <button type="submit">Cancel</button>
+        </form>
+        {% endif %}
+        {% if order.ride_owner == request.user and order.status == "open" %}
+        <a href="{% url 'modify_ride' order.id %}">Modify as ride owner</a>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+</html>
