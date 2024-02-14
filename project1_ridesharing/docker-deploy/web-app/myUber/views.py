@@ -366,10 +366,6 @@ def complete_order(request, order_id):
     if request.method == "POST":
         order.status = "completed"
         order.save()
-
-        # add email sending logic here
-        # ...
-
     else:
         messages.error(request, "Invalid request method.")
 
