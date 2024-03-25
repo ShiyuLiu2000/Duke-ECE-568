@@ -1,0 +1,13 @@
+# Ignore compiled object files and executables
+*.o
+*.out
+*.exe
+
+# Ignore logs and databases
+*.log
+*.sqlite
+
+# Ignore backup and temporary files
+*~
+
+

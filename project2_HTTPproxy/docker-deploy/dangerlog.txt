@@ -1,0 +1,28 @@
+1. Our proxy reads client requests using an accept function within a while loop, spawning a new thread for each 
+request to perform the necessary operations. However, upon closing a browser, residual erroneous messages may 
+be sent to the proxy. Initially, these requests are parsed normally, preparing to create a socket to connect 
+with the origin server. However, this process could trigger errors in the getaddrinfo function, leading to the
+termination of the entire program. To address this, we modified the behavior to only return the error and throw
+an exception.
+
+2. In this implementation of multi-threading for handling each request, unique IDs are assigned to individual 
+threads. However, during testing of the CONNECT request, we observed that, after completing its entire process 
+and logging "Connection has been closed" the log file indicated that the same ID was closed multiple times. Upon debugging,
+we identified that we did not employ synchronization for the operation of assigning IDs to each thread.
+
+3. During the validation of requests stored in the cache using a provided website for HTTP requests without docker,
+the current times and expiration times manually entered were inconsistent and did not match our expectations. 
+Further investigation revealed that the mktime function might be influenced by the Linux environment. 
+Upon running our program inside Docker, this issue was resolved.
+
+4. Exception Handling:
+4.1 Socket Operations:
+Initially, the proxy functions as a temporary server, awaiting client connections to receive requests. 
+During the creation, binding, listening, and connection acceptance phases involving socket operations,
+failures may occur. To address this, the code checks the return value of each function. If any of 
+these steps fail, the code immediately returns the corresponding error, allowing upper-level functions
+to handle the issue appropriately. Similar error-checking procedures are applied when the proxy 
+encounters difficulties connecting to the origin server.
+4.2 HTTP Protocol:
+a. 400 Bad Request: In cases where the proxy receives a client request lacking the "Host:" field, it responds directly to the client with a 400 Bad Request status code. This action is taken instead of forwarding the invalid request to the origin server.
+b. 502 Bad Gateway: If the proxy encounters an invalid response from an origin server, it sends the client a 502 Bad Gateway response, indicating the presence of an issue.

@@ -1,0 +1,277 @@
+==========================================
+METHOD---CONNECT
+==========================================
+0: "CONNECT mozilla.cloudflare-dns.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:24 2024
+0: Requesting "CONNECT mozilla.cloudflare-dns.com:443 HTTP/1.1" from mozilla.cloudflare-dns.com
+0: Responding "HTTP/1.1 200 OK
+
+"
+1: "CONNECT spocs.getpocket.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:24 2024
+2: "CONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:24 2024
+2: Requesting "CONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1" from getpocket.cdn.mozilla.net
+2: Responding "HTTP/1.1 200 OK
+
+"
+1: Requesting "CONNECT spocs.getpocket.com:443 HTTP/1.1" from spocs.getpocket.com
+1: Responding "HTTP/1.1 200 OK
+
+"
+3: "CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:25 2024
+3: Requesting "CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1" from img-getpocket.cdn.mozilla.net
+3: Responding "HTTP/1.1 200 OK
+
+"
+4: "CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:37 2024
+4: Requesting "CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1" from incoming.telemetry.mozilla.org
+4: Responding "HTTP/1.1 200 OK
+
+"
+5: "CONNECT firefox.settings.services.mozilla.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:41 2024
+6: "CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:41 2024
+6: Requesting "CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1" from incoming.telemetry.mozilla.org
+6: Responding "HTTP/1.1 200 OK
+
+"
+7: "POST http://ocsp.digicert.com/ HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:41 2024
+5: Requesting "CONNECT firefox.settings.services.mozilla.com:443 HTTP/1.1" from firefox.settings.services.mozilla.com
+5: Responding "HTTP/1.1 200 OK
+
+"
+7: Requesting "POST http://ocsp.digicert.com/ HTTP/1.1" from ocsp.digicert.com
+8: "CONNECT contile-images.services.mozilla.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:43 2024
+8: Requesting "CONNECT contile-images.services.mozilla.com:443 HTTP/1.1" from contile-images.services.mozilla.com
+8: Responding "HTTP/1.1 200 OK
+
+"
+9: "CONNECT www.google.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:44 2024
+9: Requesting "CONNECT www.google.com:443 HTTP/1.1" from www.google.com
+9: Responding "HTTP/1.1 200 OK
+
+"
+10: "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:44 2024
+10: Requesting "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from ocsp.pki.goog
+9: Connection has been closed
+11: "CONNECT www.google.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:46 2024
+11: Requesting "CONNECT www.google.com:443 HTTP/1.1" from www.google.com
+11: Responding "HTTP/1.1 200 OK
+
+"
+12: "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:46 2024
+12: Requesting "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from ocsp.pki.goog
+13: "CONNECT www.gstatic.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:49 2024
+13: Requesting "CONNECT www.gstatic.com:443 HTTP/1.1" from www.gstatic.com
+13: Responding "HTTP/1.1 200 OK
+
+"
+14: "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:49 2024
+14: Requesting "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from ocsp.pki.goog
+15: "CONNECT ogs.google.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:51 2024
+15: Requesting "CONNECT ogs.google.com:443 HTTP/1.1" from ogs.google.com
+15: Responding "HTTP/1.1 200 OK
+
+"
+16: "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:51 2024
+16: Requesting "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from ocsp.pki.goog
+17: "CONNECT play.google.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:52 2024
+17: Requesting "CONNECT play.google.com:443 HTTP/1.1" from play.google.com
+17: Responding "HTTP/1.1 200 OK
+
+"
+18: "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:53 2024
+18: Requesting "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from ocsp.pki.goog
+19: "CONNECT fonts.gstatic.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:54 2024
+20: "CONNECT fonts.gstatic.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:54 2024
+19: Requesting "CONNECT fonts.gstatic.com:443 HTTP/1.1" from fonts.gstatic.com
+19: Responding "HTTP/1.1 200 OK
+
+"
+20: Requesting "CONNECT fonts.gstatic.com:443 HTTP/1.1" from fonts.gstatic.com
+20: Responding "HTTP/1.1 200 OK
+
+"
+20: Connection has been closed
+22: "CONNECT play.google.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:54 2024
+23: "CONNECT adservice.google.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:54 2024
+22: Requesting "CONNECT play.google.com:443 HTTP/1.1" from play.google.com
+22: Responding "HTTP/1.1 200 OK
+
+"
+23: Requesting "CONNECT adservice.google.com:443 HTTP/1.1" from adservice.google.com
+23: Responding "HTTP/1.1 200 OK
+
+"
+21: "CONNECT play.google.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:54 2024
+21: Requesting "CONNECT play.google.com:443 HTTP/1.1" from play.google.com
+21: Responding "HTTP/1.1 200 OK
+
+"
+24: "CONNECT googleads.g.doubleclick.net:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:54 2024
+24: Requesting "CONNECT googleads.g.doubleclick.net:443 HTTP/1.1" from googleads.g.doubleclick.net
+24: Responding "HTTP/1.1 200 OK
+
+"
+25: "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:40:54 2024
+25: Requesting "POST http://ocsp.pki.goog/gts1c3 HTTP/1.1" from ocsp.pki.goog
+17: Connection has been closed
+26: "POST http://ocsp.digicert.com/ HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:41:42 2024
+26: Requesting "POST http://ocsp.digicert.com/ HTTP/1.1" from ocsp.digicert.com
+
+
+===========================================
+METHOD---GET
+TEST CASE: basic http
+http://neverssl.com
+===========================================
+"
+2: "GET http://neverssl.com/ HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:44:41 2024
+2: failed to locate 2 in cache
+2: Requesting "GET http://neverssl.com/ HTTP/1.1" from neverssl.com
+2: Received response from neverssl.com
+2: Received "HTTP/1.1 200 OK" from neverssl.com
+2: Responding "HTTP/1.1 200 OK"
+3: "CONNECT safebrowsing.googleapis.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 16:45:20 2024
+3: Requesting "CONNECT safebrowsing.googleapis.com:443 HTTP/1.1" from safebrowsing.googleapis.com
+3: Responding "HTTP/1.1 200 OK
+
+
+
+--------------------------------------------------
+TEST CASE: "Max-age"
+hhttp://example.com
+-Content: Cache-Control: max-age=604800
+--------------------------------------------------
+121: "GET http://example.com/ HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 19:10:03 2024
+121: failed to locate 121 in cache
+121: Requesting "GET http://example.com/ HTTP/1.1" from example.com
+121: Received response from example.com
+121: Received "HTTP/1.1 200 OK" from example.com
+121: NOTE Cache-Control: max-age=604800
+121: NOTE Expires: Sat, 09 Mar 2024 19:10:03 
+121: NOTE Last-Modified: Thu, 17 Oct 2019 07:18:26 GMT
+121: cached, expires at Sat Mar  9 19:10:03 2024
+
+121: Responding "HTTP/1.1 200 OK"
+122: "GET http://example.com/ HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 19:10:03 2024
+122: in cache, valid
+
+
+---------------------------------------------------
+TEST CASE: in-cache valid
+http://neverssl.com.com/
+---------------------------------------------------
+0: "GET http://neverssl.com/ HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 17:48:19 2024
+0: failed to locate 0 in cache
+0: Requesting "GET http://neverssl.com/ HTTP/1.1" from neverssl.com
+0: Received response from neverssl.com
+0: Received "HTTP/1.1 200 OK" from neverssl.com
+0: Responding "HTTP/1.1 200 OK"
+1: "CONNECT mozilla.cloudflare-dns.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 17:48:24 2024
+1: Requesting "CONNECT mozilla.cloudflare-dns.com:443 HTTP/1.1" from mozilla.cloudflare-dns.com
+1: Responding "HTTP/1.1 200 OK
+
+"
+2: "GET http://neverssl.com/ HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 17:48:35 2024
+2: In cache, requires validation
+2: Cached response is still valid
+
+
+----------------------------------------------------------------
+TEST CASE: Chunked Message
+http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx
+----------------------------------------------------------------
+
+0: "GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:08:10 2024
+0: failed to locate 0 in cache
+0: Requesting "GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1" from www.httpwatch.com
+0: Received response from www.httpwatch.com
+0: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+0: not cacheable because it is chunked
+1: "CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:08:24 2024
+1: Requesting "CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1" from incoming.telemetry.mozilla.org
+1: Responding "HTTP/1.1 200 OK
+
+"
+2: "CONNECT contile-images.services.mozilla.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:08:25 2024
+3: "CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:08:25 2024
+4: "POST http://ocsp.digicert.com/ HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:08:25 2024
+3: Requesting "CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1" from img-getpocket.cdn.mozilla.net
+3: Responding "HTTP/1.1 200 OK
+
+"
+2: Requesting "CONNECT contile-images.services.mozilla.com:443 HTTP/1.1" from contile-images.services.mozilla.com
+2: Responding "HTTP/1.1 200 OK
+
+"
+4: Requesting "POST http://ocsp.digicert.com/ HTTP/1.1" from ocsp.digicert.com
+5: "CONNECT mozilla.cloudflare-dns.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:08:25 2024
+5: Requesting "CONNECT mozilla.cloudflare-dns.com:443 HTTP/1.1" from mozilla.cloudflare-dns.com
+5: Responding "HTTP/1.1 200 OK
+
+"
+6: "GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:08:26 2024
+6: failed to locate 6 in cache
+6: Requesting "GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1" from www.httpwatch.com
+6: Received response from www.httpwatch.com
+6: Received "HTTP/1.1 200 OK" from www.httpwatch.com
+6: not cacheable because it is chunked
+7: "CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:08:27 2024
+7: Requesting "CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1" from incoming.telemetry.mozilla.org
+7: Responding "HTTP/1.1 200 OK
+
+"
+
+=================================
+METHOD---POST
+
+TEST CASE:
+http://httpbin.org/forms/post
+================================
+8: "GET http://httpbin.org/forms/post HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:49:31 2024
+8: failed to locate 8 in cache
+8: Requesting "GET http://httpbin.org/forms/post HTTP/1.1" from httpbin.org
+8: Received response from httpbin.org
+8: Received "HTTP/1.1 200 OK" from httpbin.org
+8: Responding "HTTP/1.1 200 OK"
+9: "GET http://httpbin.org/favicon.ico HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:49:32 2024
+9: failed to locate 9 in cache
+9: Requesting "GET http://httpbin.org/favicon.ico HTTP/1.1" from httpbin.org
+9: Received response from httpbin.org
+9: Received "HTTP/1.1 404 NOT FOUND" from httpbin.org
+9: Responding "HTTP/1.1 404 NOT FOUND"
+10: "GET http://http-textarea.badssl.com/ HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:50:25 2024
+10: failed to locate 10 in cache
+10: Requesting "GET http://http-textarea.badssl.com/ HTTP/1.1" from http-textarea.badssl.com
+10: Received response from http-textarea.badssl.com
+10: Received "HTTP/1.1 200 OK" from http-textarea.badssl.com
+10: not cacheable because it is chunked
+11: "POST http://httpbin.org/post HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:50:40 2024
+11: Requesting "POST http://httpbin.org/post HTTP/1.1" from httpbin.org
+10: Responding "HTTP/1.1 200 OK"
+12: "POST http://httpbin.org/post HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:51:41 2024
+12: Requesting "POST http://httpbin.org/post HTTP/1.1" from httpbin.org
+13: "CONNECT safebrowsing.googleapis.com:443 HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 18:53:26 2024
+13: Requesting "CONNECT safebrowsing.googleapis.com:443 HTTP/1.1" from safebrowsing.googleapis.com
+13: Responding "HTTP/1.1 200 OK
+
+"
+13: Connection has been closed
+
+
+--------------------------------------------------
+TEST CASE: "Expires"
+http://example.com
+Content: Expires: Sat, 09 Mar 2024 19:10:03 GMT
+--------------------------------------------------
+121: "GET http://example.com/ HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 19:10:03 2024
+121: failed to locate 121 in cache
+121: Requesting "GET http://example.com/ HTTP/1.1" from example.com
+121: Received response from example.com
+121: Received "HTTP/1.1 200 OK" from example.com
+121: NOTE Cache-Control: max-age=604800
+121: NOTE Expires: Sat, 09 Mar 2024 19:10:03 
+121: NOTE Last-Modified: Thu, 17 Oct 2019 07:18:26 GMT
+121: cached, expires at Sat Mar  9 19:10:03 2024
+
+121: Responding "HTTP/1.1 200 OK"
+122: "GET http://example.com/ HTTP/1.1" from 10.197.98.193 @ Sat Mar  2 19:10:03 2024
+122: in cache, valid
