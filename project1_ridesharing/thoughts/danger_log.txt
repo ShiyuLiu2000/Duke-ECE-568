@@ -1,0 +1,8 @@
+1. With the right order number, any user can view the order details even if they are not in the ride themselves (but they cannot modify it, which is correctly implemented). This can raise a problem of privacy
+2. We didn't verify if the email is valid.
+3. We didn't verify the driver's information upon registration.
+4. Users cannot retrieve their password if they forget
+5. As long as the order is not confirmed by the driver, a ride owner can modify the ride status to unreasonable state after sharers join
+6. We did not add restrictions on how frequently users can request a new ride. If a malicious user intentionally request orders very frequently, our server will be overflowed.
+7. We did not accommodate that orders should automatically time out. Users may have forgotten their order, but as long as they don't cancel it by themselves, the orders will be searchable by drivers no matter how long it has passed.
+8. When ride sharers join a ride, we did not check the if order arrival time is still available. It is possible that the ride is already in the past when a sharer joined in.
