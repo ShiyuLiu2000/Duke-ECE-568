@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<create>
+  <symbol sym="W">
+    <account id="10">100</account> <!-- error: account does not exist -->
+  </symbol>
+</create>

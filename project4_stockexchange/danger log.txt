@@ -1,0 +1,18 @@
+1. We have rather strict format requirements of user xml input, that is:
+    - all user input xml can only send either <create> or <transactions>, one at a time, due to tinyXML2 parser library limits
+    - in our xml reader functions, we directly skip the first two lines (first line for the number of bytes inside request, second line for xml version and encoding style), because we had unfixable bugs with the "?" mark inside the xml version line. So we chose to always skip the first two lines of user input to get the rest correctly processed.
+
+2. Our functions are not atomic -- in fact, we would say some of them are rather big, and thus have intricate relationships among them. This made it very hard for the future update of code (and we ourselves had suffered in debugging this intrincate project).
+
+3. The usage of pqxx:work object is intricate among many functions, and we did not have time to unify the parameters passed inside SQL query functions (some of them use connection * C as input, while some use pqxx:work & W as input), this could also lead problem to future maintanence.
+
+4. In out scalability's pressure test, the maximum number of request we tested is only 1000, which is not enough for real applications.
+
+5. For the order matching, we use the price and the order created time to evaluate the priority of matching.
+   However, according to our code and the timestamp that we used, The order created order might be different from the order of the XML command. 
+
+6. The scalability test is tested and run on local machine, not docker.
+   We shall improve the adapability of our test inside docker container later for the improvement. 
+
+7. The host for the connection is different for the local connection and docker connection.
+   We need to change the host name for the connection when switch testing on local and docker. 

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<results>
+    <created id="1"/>
+    <created id="2"/>
+    <created id="3"/>
+    <created sym="X" id="1"/>
+    <created sym="Y" id="2"/>
+    <created sym="Y" id="3"/>
+    <error id="1">ERROR:  duplicate key value violates unique constraint "account_pkey"
+DETAIL:  Key (account_id)=(1                   ) already exists.
+</error>
+    <created sym="X" id="2"/>
+</results>
+<?xml version="1.0"?>
+<results>
+    <opened sym="X" amount="10.000000" limit="1000.000000" id="1"/>
+    <error>Balance is not sufficient</error>
+</results>
+<?xml version="1.0"?>
+<results>
+    <error>Insufficient shares for this sell</error>
+    <error>Symbol is not owned by account</error>
+</results>
+<?xml version="1.0"?>
+<results>
+    <opened sym="Y" amount="50.000000" limit="200.000000" id="2"/>
+</results>
+<?xml version="1.0"?>
+<results>
+    <error id="5">Account does not exist</error>
+</results>
+<?xml version="1.0"?>
+<results>
+    <opened sym="X" amount="100.000000" limit="200.000000" id="3"/>
+</results>
+<?xml version="1.0"?>
+<results>
+    <created id="6"/>
+    <created id="7"/>
+    <created sym="Z" id="6"/>
+    <created sym="W" id="7"/>
+</results>
+<?xml version="1.0"?>
+<results>
+    <error>Balance is not sufficient</error>
+    <error>Symbol is not owned by account</error>
+</results>
+<?xml version="1.0"?>
+<results>
+    <error>Symbol is not owned by account</error>
+    <error>Balance is not sufficient</error>
+</results>
+<?xml version="1.0"?>
+<results>
+    <error>Insufficient shares for this sell</error>
+    <error id="999">Order not found</error>
+</results>
+<?xml version="1.0"?>
+<results>
+    <error sym="W" id="10">ERROR:  insert or update on table "symbol" violates foreign key constraint "symbol_account_id_fkey"
+DETAIL:  Key (account_id)=(10                  ) is not present in table "account".
+</error>
+</results>
+<?xml version="1.0"?>
+<results>
+    <error>Order ID (999) does not exist for account ID (2) </error>
+</results>

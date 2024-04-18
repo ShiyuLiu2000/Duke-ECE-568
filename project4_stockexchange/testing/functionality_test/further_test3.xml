@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transactions id="1">
+  <order sym="X" amount="-600" limit="250"/> <!-- error: insufficient shares -->
+  <cancel id="999"/> <!-- error: order ID does not exist -->
+</transactions>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transactions id="2">
+  <query id="999"/> <!-- error: order ID does not exist -->
+</transactions>

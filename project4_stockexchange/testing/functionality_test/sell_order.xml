@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transactions id="1">
+  <order sym="X" amount="-600" limit="500"/> <!-- should fail due to insufficient shares -->
+  <order sym="Y" amount="-10" limit="2000"/>
+</transactions>

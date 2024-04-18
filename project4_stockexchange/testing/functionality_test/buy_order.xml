@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transactions id="2">
+  <order sym="X" amount="10" limit="1000"/>
+  <order sym="Y" amount="20" limit="1500"/> <!-- should fail due to insufficient balance -->
+</transactions>

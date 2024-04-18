@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transactions id="1">
+  <order sym="X" amount="100" limit="200"/>
+</transactions>
+<transactions id="2">
+  <order sym="X" amount="-40" limit="190"/> <!-- partially fulfills buy order -->
+  <order sym="X" amount="-30" limit="195"/> <!-- further partial fulfillment -->
+</transactions>

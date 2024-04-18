@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transactions id="7">
+  <order sym="Z" amount="-1500" limit="105"/> <!-- exceeds holdings; should error -->
+  <order sym="W" amount="700" limit="155"/>
+</transactions>
