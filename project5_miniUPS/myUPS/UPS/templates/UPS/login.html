@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+    <title>Login</title>
+</head>
+
 <body>
     <h2>Login</h2>
     <form method="post">
@@ -8,7 +12,7 @@
         {{ form.as_p }}
         <button type="submit">Login</button>
     </form>
-
+    <p>Not a user? <a href="{% url 'signup' %}">Sign up here</a></p>
     <a href="{% url 'frontpage' %}">Return to Frontpage</a>
 </body>
 

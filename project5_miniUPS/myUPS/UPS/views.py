@@ -1,8 +1,25 @@
-from django.shortcuts import render, redirect
-from django.urls import reverse
-from .forms import SignUpForm
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import AuthenticationForm
+from curses.ascii import HT
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import login, authenticate, logout
+from .forms import (
+    SignUpForm,
+)
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.http import HttpResponse, HttpResponseRedirect
+from django.db.models import Sum
+from django.urls import is_valid_path, reverse
+from django.contrib import messages
+from .models import UserManager, User, Package, Truck, Delivery
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseNotAllowed
+from django.db.models import Q
+import datetime
+from django.views.decorators.http import require_POST
+from django.utils import timezone
+from django.core.mail import send_mail
+from django.conf import settings
+import os
 
 
 def frontpage(request):
@@ -13,7 +30,8 @@ def signup_view(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            login(request, user)
             return redirect("login")
     else:
         form = SignUpForm()
@@ -27,12 +45,11 @@ def login_view(request):
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
             user = authenticate(request, username=username, password=password)
-            if user is not None:
+            if user:
                 login(request, user)
                 return redirect("myPackages")
             else:
-                form.add_error(None, "Invalid username or password.")
+                return HttpResponse("Invalid username or password")
     else:
         form = AuthenticationForm()
-
     return render(request, "UPS/login.html", {"form": form})
