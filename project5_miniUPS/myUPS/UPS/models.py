@@ -44,9 +44,8 @@ class User(AbstractBaseUser):
 
 
 class Package(models.Model):
-    package_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    tracking_number = models.CharField(max_length=255, unique=True)
+    tracking_number = models.CharField(max_length=255, unique=True, primary_key=True)
     status = models.CharField(
         max_length=50,
         choices=[
@@ -56,6 +55,7 @@ class Package(models.Model):
         ],
     )
     destination_address = models.CharField(max_length=255)
+    whats_inside = models.CharField(max_length=255)
 
     def __str__(self):
         return f"{self.tracking_number} - {self.status}"

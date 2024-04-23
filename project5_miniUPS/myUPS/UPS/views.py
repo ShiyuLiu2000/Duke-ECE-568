@@ -53,3 +53,20 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     return render(request, "UPS/login.html", {"form": form})
+
+def track_basic_package(request):
+    tracking_number = request.GET.get("tracking_number")
+
+    if not tracking_number:
+        return HttpResponse("Tracking number is required.", status=400)
+
+    return redirect(reverse("package_basic_info", args=[tracking_number]))
+
+def package_basic_info(request, tracking_number):
+    package = get_object_or_404(Package, tracking_number=tracking_number)
+    context = {
+        "tracking_number": package.tracking_number,
+        "status": package.status,
+    }
+
+    return render(request, "UPS/package_basic_info.html", context)
