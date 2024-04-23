@@ -78,6 +78,7 @@ def logout_view(request):
     logout(request)
     return redirect("frontpage")
 
+
 @login_required
 def my_packages(request):
     user = request.user
@@ -90,7 +91,9 @@ def my_packages(request):
         if package.user_id == user.user_id:
             return redirect(reverse("package_details", args=[search_tracking_number]))
         else:
-            return redirect(reverse("package_basic_info", args=[search_tracking_number]))
+            return redirect(
+                reverse("package_basic_info", args=[search_tracking_number])
+            )
 
     if status_filter:
         packages = Package.objects.filter(user=user, status=status_filter)
@@ -111,7 +114,9 @@ def package_details(request, tracking_number):
     package = get_object_or_404(Package, tracking_number=tracking_number)
 
     if package.user_id != user.user_id:
-        return HttpResponse("You do not have permission to view this package.", status=403)
+        return HttpResponse(
+            "You do not have permission to view this package.", status=403
+        )
 
     context = {
         "tracking_number": package.tracking_number,
@@ -156,3 +161,21 @@ def package_details(request, tracking_number):
             package.save()
 
     return render(request, "UPS/package_details.html", context)
+
+
+@login_required
+def profile_view(request):
+    user = request.user
+    context = {
+        "user_id": user.user_id,
+        "username": user.username,
+        "email": user.email,
+    }
+
+    if request.method == "POST":
+        new_email = request.POST.get("new_email", "")
+        if new_email:
+            user.email = new_email
+            user.save()
+
+    return render(request, "UPS/profile.html", context)

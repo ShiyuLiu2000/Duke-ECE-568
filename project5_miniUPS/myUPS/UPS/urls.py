@@ -19,4 +19,5 @@ urlpatterns = [
         views.package_details,
         name="package_details",
     ),
+    path("profile/", views.profile_view, name="profile"),
 ]
