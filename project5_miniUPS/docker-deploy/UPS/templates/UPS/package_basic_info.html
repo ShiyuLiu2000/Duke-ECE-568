@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Package Basic Information</title>
+</head>
+
+<body>
+    <h2>Package Basic Information</h2>
+    <p>Tracking Number: {{ tracking_number }}</p>
+    <p>Status: {{ status }}</p>
+
+    <p>
+        These are the basic information of this package. If you want more info, or you want to edit the address,
+        please log in to the owner account of this package.
+    </p>
+    <p>
+        You are seeing this page because you are either:
+    <ul>
+        <li>not logged in</li>
+        <li>this package is not yours</li>
+    </ul>
+    Please give your user_id shown in your profile to Amazon to add this package to your account.
+    </p>
+
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'frontpage' %}">Return to Frontpage</a>
+</body>
+
+</html>
