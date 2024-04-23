@@ -13,4 +13,10 @@ urlpatterns = [
         name="package_basic_info",
     ),
     path("logout/", LogoutView.as_view(next_page="frontpage"), name="logout"),
+    path("myPackages/", views.my_packages, name="myPackages"),
+    path(
+        "myPackages/<int:tracking_number>/details/",
+        views.package_details,
+        name="package_details",
+    ),
 ]
