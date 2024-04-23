@@ -70,3 +70,7 @@ def package_basic_info(request, tracking_number):
     }
 
     return render(request, "UPS/package_basic_info.html", context)
+
+def logout_view(request):
+    logout(request)
+    return redirect("frontpage")
