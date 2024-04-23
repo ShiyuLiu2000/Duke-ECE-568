@@ -60,7 +60,14 @@ def track_basic_package(request):
 
     if not tracking_number:
         return HttpResponse("Tracking number is required.", status=400)
-
+    try:
+        package = Package.objects.get(tracking_number=tracking_number)
+    except Package.DoesNotExist:
+        return render(
+            request,
+            "UPS/frontpage.html",
+            {"error": "The package you track does not exist."},
+        )
     return redirect(reverse("package_basic_info", args=[tracking_number]))
 
 
@@ -86,7 +93,18 @@ def my_packages(request):
     status_filter = request.GET.get("status", "")
 
     if search_tracking_number:
-        package = get_object_or_404(Package, tracking_number=search_tracking_number)
+        try:
+            package = Package.objects.get(tracking_number=search_tracking_number)
+        except Package.DoesNotExist:
+            return render(
+                request,
+                "UPS/my_packages.html",
+                {
+                    "error": "The package you are tracking does not exist.",
+                    "user": user,
+                    "packages": Package.objects.filter(user=user),
+                },
+            )
 
         if package.user_id == user.user_id:
             return redirect(reverse("package_details", args=[search_tracking_number]))

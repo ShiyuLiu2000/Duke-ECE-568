@@ -12,6 +12,9 @@
         <input type="text" id="tracking_number" name="tracking_number" required>
         <button type="submit">Track</button>
     </form>
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
 
     <p>Log in to see more information about your package!</p>
     <a href="{% url 'login' %}">Login</a>
