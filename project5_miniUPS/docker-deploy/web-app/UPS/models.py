@@ -43,24 +43,6 @@ class User(AbstractBaseUser):
         return self.username
 
 
-class Package(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-    tracking_number = models.CharField(max_length=255, unique=True, primary_key=True)
-    status = models.CharField(
-        max_length=50,
-        choices=[
-            ("at warehouse", "At Warehouse"),
-            ("delivering", "Delivering"),
-            ("delivered", "Delivered"),
-        ],
-    )
-    destination_address = models.CharField(max_length=255)
-    whats_inside = models.CharField(max_length=255)
-
-    def __str__(self):
-        return f"{self.tracking_number} - {self.status}"
-
-
 class Truck(models.Model):
     truck_id = models.AutoField(primary_key=True)
     status = models.CharField(
@@ -72,11 +54,36 @@ class Truck(models.Model):
             ("delivering", "Delivering"),
         ],
     )
-    idle_x = models.IntegerField()
-    idle_y = models.IntegerField()
+    current_x = models.IntegerField()
+    current_y = models.IntegerField()
 
     def __str__(self):
         return f"Truck {self.truck_id} - {self.status}"
+
+
+class Package(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    tracking_number = models.CharField(max_length=255, unique=True, primary_key=True)
+    status = models.CharField(
+        max_length=50,
+        choices=[
+            ("at warehouse", "At Warehouse"),
+            ("loading", "Loading"),
+            ("delivering", "Delivering"),
+            ("delivered", "Delivered"),
+        ],
+    )
+    destination_address = models.CharField(max_length=255)
+    whats_inside = models.CharField(max_length=255)
+
+    whid = models.IntegerField(null=True, blank=True)
+    Amazon_id = models.CharField(max_length=255, null=True, blank=True)
+    desAddr_x = models.IntegerField(null=True, blank=True)
+    desAddr_y = models.IntegerField(null=True, blank=True)
+    truck = models.ForeignKey(Truck, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.tracking_number} - {self.status}"
 
 
 class Delivery(models.Model):
