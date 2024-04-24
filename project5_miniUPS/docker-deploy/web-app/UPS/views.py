@@ -1,25 +1,12 @@
-from curses.ascii import HT
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
-from .forms import (
-    SignUpForm,
-)
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.http import HttpResponse, HttpResponseRedirect
-from django.db.models import Sum
-from django.urls import is_valid_path, reverse
-from django.contrib import messages
-from .models import UserManager, User, Package, Truck, Delivery
+from .forms import SignUpForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.http import HttpResponse
+from django.urls import reverse
+from .models import Package, Delivery
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponseNotAllowed
-from django.db.models import Q
-import datetime
-from django.views.decorators.http import require_POST
-from django.utils import timezone
 from django.core.mail import send_mail
-from django.conf import settings
-import os
 
 
 def frontpage(request):
@@ -113,7 +100,7 @@ def my_packages(request):
                 reverse("package_basic_info", args=[search_tracking_number])
             )
 
-    if status_filter:
+    if status_filter in ["at warehouse", "loading", "delivering", "delivered"]:
         packages = Package.objects.filter(user=user, status=status_filter)
     else:
         packages = Package.objects.filter(user=user)
@@ -136,27 +123,20 @@ def package_details(request, tracking_number):
             "You do not have permission to view this package.", status=403
         )
 
-    context = {
-        "tracking_number": package.tracking_number,
-        "status": package.status,
-        "destination_address": package.destination_address,
-    }
-
-    # truck and delivery information
-    deliveries = Delivery.objects.filter(package=package).order_by("goWarehouse_time")
+    deliveries = Delivery.objects.filter(package=package).order_by("go_warehouse_time")
     delivery_info = []
 
     for delivery in deliveries:
         truck_id = delivery.truck.truck_id
 
-        if delivery.goWarehouse_time:
+        if delivery.go_warehouse_time:
             delivery_info.append(
-                f"Truck No. {truck_id} starts heading to the warehouse at {delivery.goWarehouse_time}."
+                f"Truck No. {truck_id} starts heading to the warehouse at {delivery.go_warehouse_time}."
             )
 
-        if delivery.arriveWarehouse_time:
+        if delivery.arrive_warehouse_time:
             delivery_info.append(
-                f"Truck No. {truck_id} has arrived at the warehouse at {delivery.arriveWarehouse_time}."
+                f"Truck No. {truck_id} has arrived at the warehouse at {delivery.arrive_warehouse_time}."
             )
 
         if delivery.delivery_start_time:
@@ -169,14 +149,26 @@ def package_details(request, tracking_number):
                 f"Truck No. {truck_id} delivered your package to {package.destination_address} at {delivery.delivered_time}."
             )
 
-    context["delivery_info"] = delivery_info
-
-    # address editing
     if request.method == "POST" and package.status == "at warehouse":
         new_address = request.POST.get("new_address", "")
         if new_address:
             package.destination_address = new_address
             package.save()
+
+            send_mail(
+                "Package Destination Address Updated",
+                f"Your package with tracking number {package.tracking_number} of contents: {package.whats_inside} has a new destination address: {new_address}. Contents: {package.whats_inside}.",
+                "ridesharemyuber@gmail.com",
+                [user.email],
+                fail_silently=False,
+            )
+
+    context = {
+        "tracking_number": package.tracking_number,
+        "status": package.status,
+        "destination_address": package.destination_address,
+        "delivery_info": delivery_info,
+    }
 
     return render(request, "UPS/package_details.html", context)
 

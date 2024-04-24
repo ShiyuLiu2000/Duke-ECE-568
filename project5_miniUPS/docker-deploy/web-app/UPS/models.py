@@ -77,9 +77,9 @@ class Package(models.Model):
     whats_inside = models.CharField(max_length=255)
 
     whid = models.IntegerField(null=True, blank=True)
-    Amazon_id = models.CharField(max_length=255, null=True, blank=True)
-    desAddr_x = models.IntegerField(null=True, blank=True)
-    desAddr_y = models.IntegerField(null=True, blank=True)
+    amazon_id = models.CharField(max_length=255, null=True, blank=True)
+    dest_addr_x = models.IntegerField(null=True, blank=True)
+    dest_addr_y = models.IntegerField(null=True, blank=True)
     truck = models.ForeignKey(Truck, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
@@ -91,8 +91,8 @@ class Delivery(models.Model):
     truck = models.ForeignKey(Truck, on_delete=models.CASCADE)
     package = models.ForeignKey(Package, on_delete=models.CASCADE)
     pickup_location = models.CharField(max_length=255)
-    goWarehouse_time = models.DateTimeField(null=True, blank=True)
-    arriveWarehouse_time = models.DateTimeField(null=True, blank=True)
+    go_warehouse_time = models.DateTimeField(null=True, blank=True)
+    arrive_warehouse_time = models.DateTimeField(null=True, blank=True)
     delivery_start_time = models.DateTimeField(null=True, blank=True)
     delivered_time = models.DateTimeField(null=True, blank=True)
 

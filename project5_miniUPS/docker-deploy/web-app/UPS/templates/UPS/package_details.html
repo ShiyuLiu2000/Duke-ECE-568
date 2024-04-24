@@ -21,6 +21,11 @@
             <button type="submit">Save</button>
         </div>
     </form>
+    {% elif status == "loading" %}
+    <button type="button" onclick="showMessage()">Edit Address</button>
+    <p id="edit-message" style="display: none;">This package is no longer at warehouse. You cannot edit the delivery
+        address.
+    </p>
     {% elif status == "delivering" %}
     <button type="button" onclick="showMessage()">Edit Address</button>
     <p id="edit-message" style="display: none;">This package is out for delivery. You cannot edit the delivery address.
