@@ -150,3 +150,5 @@ ALTER USER postgres PASSWORD 'pwd';
 \dt
 
 SELECT \* FROM "myUber_rider";
+
+psql -U postgres -d upsdb
