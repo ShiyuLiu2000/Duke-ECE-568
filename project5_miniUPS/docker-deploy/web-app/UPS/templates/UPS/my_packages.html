@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <title>My Packages</title>
-</head>
-
-<body>
+{% block body %}
+<div class="container">
     <h2>My Packages</h2>
 
     <form method="get" action="{% url 'myPackages' %}">
@@ -39,7 +35,5 @@
 
     <a href="{% url 'profile' %}">View My Profile</a>
     <a href="{% url 'logout' %}">Logout</a>
-
-</body>
-
-</html>
+</div>
+{% endblock %}

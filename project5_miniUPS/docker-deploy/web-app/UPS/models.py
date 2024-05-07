@@ -56,6 +56,10 @@ class Truck(models.Model):
     )
     current_x = models.IntegerField()
     current_y = models.IntegerField()
+    ready_to_pickup_time = models.DateTimeField(null=True, blank=True)
+    arrive_warehouse_time = models.DateTimeField(null=True, blank=True)
+    delivery_start_time = models.DateTimeField(null=True, blank=True)
+    delivered_time = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return f"Truck {self.truck_id} - {self.status}"
@@ -73,13 +77,15 @@ class Package(models.Model):
             ("delivered", "Delivered"),
         ],
     )
-    destination_address = models.CharField(max_length=255)
     whats_inside = models.CharField(max_length=255)
+    package_id_from_amazon = models.BigIntegerField(unique=True, null=True)
 
     whid = models.IntegerField(null=True, blank=True)
     amazon_id = models.CharField(max_length=255, null=True, blank=True)
     dest_addr_x = models.IntegerField(null=True, blank=True)
     dest_addr_y = models.IntegerField(null=True, blank=True)
+    init_addr_x = models.IntegerField(null=True, blank=True)
+    init_addr_y = models.IntegerField(null=True, blank=True)
     truck = models.ForeignKey(Truck, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
@@ -90,7 +96,7 @@ class Delivery(models.Model):
     delivery_id = models.AutoField(primary_key=True)
     truck = models.ForeignKey(Truck, on_delete=models.CASCADE)
     package = models.ForeignKey(Package, on_delete=models.CASCADE)
-    pickup_location = models.CharField(max_length=255)
+    pickup_location = models.CharField(max_length=255, null=True)
     go_warehouse_time = models.DateTimeField(null=True, blank=True)
     arrive_warehouse_time = models.DateTimeField(null=True, blank=True)
     delivery_start_time = models.DateTimeField(null=True, blank=True)

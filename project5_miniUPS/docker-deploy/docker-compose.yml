@@ -10,6 +10,11 @@ services:
       - TZ=UTC
     volumes:
       - data-volume:/var/lib/postgresql/data
+    restart: always
+    expose:
+      - "5432"
+    ports:
+      - "54321:5432"
   web-init:
     build: ./web-app
     command: /code/initserver.sh
@@ -35,5 +40,54 @@ services:
       - ./nginx/config:/etc/nginx/conf.d
     depends_on:
       - web
-volumes:
-  data-volume:
+  server:
+    build: ./backend
+    user: root
+    volumes:
+      - ./backend:/code
+    command: bash -c "./server_app"
+    ports:
+      - "9999:9999"
+      - "12345:12345"
+    expose:
+      - "12345"
+    depends_on:
+      - web
+
+# version: '2'
+
+# services:
+#   db:
+#     image: postgres
+#     environment:
+#       - POSTGRES_DB=postgres
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=postgres
+#       - TZ=UTC
+#     volumes:
+#       - data-volume:/var/lib/postgresql/data
+#   web-init:
+#     build: ./web-app
+#     command: /code/initserver.sh
+#     volumes:
+#       - ./web-app:/code
+#     depends_on:
+#       - db
+#   web:
+#     build: ./web-app
+#     user: root
+#     command: /code/runserver.sh
+#     volumes:
+#       - ./web-app:/code
+#     expose:
+#       - "8000"
+#     depends_on:
+#       - web-init
+#   nginx:
+#     image: nginx:latest
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ./nginx/config:/etc/nginx/conf.d
+#     depends_on:
+#       - web

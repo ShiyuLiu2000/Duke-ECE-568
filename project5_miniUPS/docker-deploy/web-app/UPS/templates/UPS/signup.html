@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
 
-<head>
-    <title>mini UPS User Sign Up</title>
-</head>
-
-<body>
+{% block body %}
+<div class="container">
     <h2>User Sign Up</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Sign up</button>
+        <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
-    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
-    <a href="{% url 'frontpage' %}">Return to Frontpage</a>
-</body>
-
-</html>
+    <p>Already have an account? <a href="{% url 'login' %}" class="btn btn-secondary">Login</a></p>
+    <a href="{% url 'frontpage' %}" class="btn btn-secondary">Return to Frontpage</a>
+</div>
+{% endblock %}

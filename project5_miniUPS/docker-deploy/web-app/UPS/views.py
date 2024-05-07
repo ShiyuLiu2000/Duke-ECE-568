@@ -113,6 +113,7 @@ def my_packages(request):
     return render(request, "UPS/my_packages.html", context)
 
 
+
 @login_required
 def package_details(request, tracking_number):
     user = request.user
@@ -146,33 +147,35 @@ def package_details(request, tracking_number):
 
         if delivery.delivered_time:
             delivery_info.append(
-                f"Truck No. {truck_id} delivered your package to {package.destination_address} at {delivery.delivered_time}."
+                f"Truck No. {truck_id} delivered your package to {package.dest_addr_x}, {package.dest_addr_y} at {delivery.delivered_time}."
             )
 
-    if request.method == "POST" and package.status == "at warehouse":
-        new_address = request.POST.get("new_address", "")
-        if new_address:
-            package.destination_address = new_address
+    if request.method == "POST" and (package.status == "at warehouse" or package.status == "loading"):
+        new_addr_x = int(request.POST.get("new_addr_x", 0))
+        new_addr_y = int(request.POST.get("new_addr_y", 0))
+
+        if new_addr_x and new_addr_y:
+            package.dest_addr_x = new_addr_x
+            package.dest_addr_y = new_addr_y
             package.save()
 
-            send_mail(
-                "Package Destination Address Updated",
-                f"Your package with tracking number {package.tracking_number} of contents: {package.whats_inside} has a new destination address: {new_address}. Contents: {package.whats_inside}.",
-                "ridesharemyuber@gmail.com",
-                [user.email],
-                fail_silently=False,
-            )
+            # send_mail(
+            #     "Package Destination Address Updated",
+            #     f"Your package with tracking number {package.tracking_number} has a new destination address: ({new_addr_x}, {new_addr_y}). Contents: {package.whats_inside}.",
+            #     "ridesharemyuber@gmail.com",
+            #     [user.email],
+            #     fail_silently=False,
+            # )
 
     context = {
         "tracking_number": package.tracking_number,
         "status": package.status,
-        "destination_address": package.destination_address,
         "delivery_info": delivery_info,
+        "dest_addr_x": package.dest_addr_x,
+        "dest_addr_y": package.dest_addr_y,
     }
 
     return render(request, "UPS/package_details.html", context)
-
-
 @login_required
 def profile_view(request):
     user = request.user

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mini UPS</title>
+<!-- Bootstrap CSS -->
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://formden.com/static/assets/demos/bootstrap-iso/bootstrap-iso/bootstrap-iso.css" />
+  
+<style>
+
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+  body {
+      background-color: #dfaeae;
+      font-family: 'Open Sans', serif
+  }
+
+  .container {
+      margin-top: 50px;
+      margin-bottom: 50px
+  }
+
+  .card {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(229, 146, 225, 0.991);
+      border-radius: 0.10rem
+  }
+
+  .card-header:first-child {
+      border-radius: calc(0.37rem - 1px) calc(0.37rem - 1px) 0 0
+  }
+
+  .card-header {
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 0;
+      background-color: #fff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+  }
+
+  .track {
+      position: relative;
+      background-color: #ddd;
+      height: 7px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin-bottom: 60px;
+      margin-top: 50px
+  }
+
+  .track .step {
+      -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      width: 25%;
+      margin-top: -18px;
+      text-align: center;
+      position: relative
+  }
+
+  .track .step.active:before {
+      background: #FF5722
+  }
+
+  .track .step::before {
+      height: 7px;
+      position: absolute;
+      content: "";
+      width: 100%;
+      left: 0;
+      top: 18px
+  }
+
+  .track .step.active .icon {
+      background: #ee5435;
+      color: #fff
+  }
+
+  .track .icon {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      position: relative;
+      border-radius: 100%;
+      background: #ddd
+  }
+
+  .track .step.active .text {
+      font-weight: 400;
+      color: #000
+  }
+
+  .track .text {
+      display: block;
+      margin-top: 7px
+  }
+
+  .itemside {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      width: 100%
+  }
+
+  .itemside .aside {
+      position: relative;
+      -ms-flex-negative: 0;
+      flex-shrink: 0
+  }
+
+  .img-sm {
+      width: 80px;
+      height: 80px;
+      padding: 7px
+  }
+
+  ul.row,
+  ul.row-sm {
+      list-style: none;
+      padding: 0
+  }
+
+  .itemside .info {
+      padding-left: 15px;
+      padding-right: 7px
+  }
+
+  .itemside .title {
+      display: block;
+      margin-bottom: 5px;
+      color: #212529
+  }
+
+  p {
+      margin-top: 0;
+      margin-bottom: 1rem
+  }
+
+  .btn-warning {
+      color: #ffffff;
+      background-color: #ee5435;
+      border-color: #ee5435;
+      border-radius: 1px
+  }
+
+  .btn-warning:hover {
+      color: #ffffff;
+      background-color: #ff2b00;
+      border-color: #ff2b00;
+      border-radius: 1px
+  }
+
+  .header-order {
+      padding-left: 20px;
+      margin-left: 0px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .img-sm {
+      width: 150px;
+      height:150px;
+  }
+
+  .images-border{
+      padding-left: 20px;
+      margin-left: 50px;
+  }
+
+  .mimic-card {
+      border-radius: 50px;
+      background: #ffffff;
+      box-shadow:  20px 20px 60px #e6e6e6,
+                   -20px -20px 60px #ffffff;
+  }
+  
+  .mimic-card:hover {
+      border-radius: 50px;
+      background: #ffffff;
+      box-shadow: inset 20px 20px 60px #e6e6e6,
+                  inset -20px -20px 60px #ffffff;
+  }
+
+  .full-height {
+    min-height: calc(100vh - 56px - 48px);
+  }
+
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar {
+    padding-top: 1rem; /* Increase top padding */
+    padding-bottom: 1rem; /* Increase bottom padding */
+  }
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  .login-form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; /* Adjust the width as needed */
+    margin: 0 auto;
+  }
+
+  .login-form .form-control {
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .login-form .btn {
+    border-radius: 20px;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    background-color: #1b905a;
+    border: none;
+  }
+
+  .login-form .btn-success {
+    background-color: #1a985d;
+    border-color: #1a985d;
+  }
+
+  .login-form .btn-success:hover {
+    background-color: #157347; 
+    border-color: #157347;
+  }
+
+  .login-form .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .login-form .btn-primary:hover {
+    background-color: #0056b3; 
+    border-color: #0056b3;
+  }
+
+  .login-form h2 {
+    color: #000;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .login-form p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  footer {
+    padding: 1rem 0; /* Increase padding for top and bottom */
+    /* If you want to make the footer taller, you can adjust the height property instead of padding */
+  }
+
+</style>
+
+</head>
+<body>
+
+<!-- Navigation bar -->
+<nav class="text-white navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid justify-content-between">
+    <a class="navbar-brand navbar-logo" href="{% url 'frontpage' %}">
+      mini UPS
+    </a>
+  </div>
+</nav>
+
+{% block body %}
+{% endblock %}
+
+<!-- Footer -->
+
+<footer class=" text-white bg-dark text-center text-white d-flex align-items-center justify-content-center" style="height: 48px;">
+  <div>
+    © 2024 mini UPS
+  </div>
+</footer>
+</body>
+</html>
